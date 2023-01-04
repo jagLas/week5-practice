@@ -2,11 +2,11 @@ class DynamicArray {
 
   constructor(defaultSize = 4) {
     this.capacity = defaultSize;
-    this.data = [];
+    this.data = new Array(defaultSize);
     this.length = 0;
 
     for (let i = 0; i < defaultSize; i++) {
-      this.data.push(undefined);
+      this.data[i] = undefined;
     }
   }
 
@@ -66,26 +66,17 @@ class DynamicArray {
   resize() {
     this.capacity *= 2;
 
-    while(this.data.length < this.capacity) {
-      this.data.push(undefined);
+    let newArray = new Array(this.capacity);
+
+    for (let i = 0; i < this.capacity; i++) {
+      newArray[i] = this.data[i];
     }
+
+    this.data = newArray;
+
   }
 
 }
-
-dynamicArr = new DynamicArray();
-dynamicArr.resize();
-dynamicArr.push(1);
-dynamicArr.push(2);
-dynamicArr.push(3);
-
-// console.log(dynamicArr)
-// console.log(dynamicArr.shift());
-// console.log(dynamicArr)
-// console.log(dynamicArr.shift());
-// console.log(dynamicArr)
-// console.log(dynamicArr.shift());
-// console.log(dynamicArr)
 
 
 
