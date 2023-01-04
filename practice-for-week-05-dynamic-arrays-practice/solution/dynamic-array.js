@@ -1,9 +1,13 @@
 class DynamicArray {
 
   constructor(defaultSize=4) {
+    this.capacity = defaultSize;
+    this.data = [];
+    this.length = 0;
 
-    // Your code here
-
+    for (let i = 0; i < defaultSize; i++) {
+      this.data.push('');
+    }
   }
 
   read(index) {
@@ -17,6 +21,11 @@ class DynamicArray {
   }
 
 }
+
+dynamicArr = new DynamicArray();
+console.log(dynamicArr.length)
+console.log(this.data)
+
 
 
 module.exports = DynamicArray;
