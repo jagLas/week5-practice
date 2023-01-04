@@ -7,16 +7,26 @@ const addZeros = require('../utils/addZeros');
 /******************************************************************************/
 
 const asciiTo8bit = str => {
-  // Your code here
+  let binaryArray = [];
+
+  for (let i = 0; i < str.length; i++) {
+    binaryArray.push(str.charCodeAt(i));
+  }
+
+  binaryArray = binaryArray.map(code => code.toString(2));
+
+  binaryArray = binaryArray.map(binary => addZeros(binary, 8));
+  
+  return binaryArray.join('');
 };
 
 /******************************************************************************/
 
 console.log(asciiTo8bit('123'));
-// 001100010011001000110011
+// 0011 0001 0011 0010 0011 0011
 
 console.log(asciiTo8bit('ABC'));
-// 010000010100001001000011
+// 0100 0001 0100 0010 0100 0011
 
 console.log(asciiTo8bit('Hello, world!'));
 // 01001000011001010110110001101100011011110010110000100000011101110110111101110010011011000110010000100001
