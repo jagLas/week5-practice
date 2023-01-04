@@ -3,7 +3,38 @@
 /******************************************************************************/
 
 const convertToBase10 = str => {
-  // Your code here
+
+  let sum = 0;
+
+  //for binary numbers
+  if (str[1] === 'b') {
+    for (let i = str.length - 1, j = 0; i > 1; i--, j++) {
+      sum += str[i] * 2 ** j;
+    }
+  }
+
+  //for hex numbers
+  if (str[1] === 'x') {
+    for (let i = str.length - 1, j = 0; i > 1; i--, j++) {
+      let digit = str[i];
+      if (digit === 'a'){
+        digit = 10;
+      } else if (digit === 'b') {
+        digit = 11;
+      } else if (digit === 'c') {
+        digit = 12;
+      } else if (digit === 'd') {
+        digit = 13;
+      } else if (digit === 'e') {
+        digit = 14;
+      } else if (digit === 'f') {
+        digit = 15;
+      }
+      sum += digit * 16 ** j;
+    }
+  }
+
+  return sum;
 };
 
 /******************************************************************************/

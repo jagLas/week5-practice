@@ -3,7 +3,57 @@
 /******************************************************************************/
 
 const convertToBase16 = element => {
-  // Your code here
+
+  //converts into binary and leaves off 0b
+  if (element[1] != 'b') {
+    const binaryArray = [0];
+
+    let place = 0;
+    let base = 1;
+    while (element - base >= element / 2) {
+      binaryArray.push(0)
+      place++;
+      base = 2 ** place;
+    }
+  
+    let newDec = element;
+  
+  
+    binaryArray.forEach((digit, index) => {
+      let base = 2 ** (binaryArray.length - index - 1);
+      if (newDec - base >= 0) {
+        binaryArray.splice(index, 1, 1);
+        newDec -= base;
+      }
+  
+    })
+  
+    while (binaryArray.length % 4 != 0) {
+      binaryArray.unshift(0);
+    }
+
+    element = binaryArray.join('');
+
+  }
+
+  //removes leading 0b if binary
+  if (element[1] === 'b') {
+    element = element.slice(2)
+  }
+
+  //lookup objects for hexvalues given a 4 digit binary
+  const hexObj = {'0000': 0, '0001': 1, '0010': 2, '0011': 3, '0100': 4, '0101': 5, '0110': 6, '0111': 7, '1000': 8, '1001': 9, '1010': 'a', '1011': 'b', '1100': 'c', '1101': 'd', '1110': 'e', '1111': 'f'}
+  
+
+  let hexNum = '0x'
+  //goes by groups of four to convert to hex shorthand
+  for (let i = 0; i < element.length; i += 4){
+    let chunk = element.slice(i, i + 4);
+    let hexValue = hexObj[chunk];
+    hexNum += hexValue;
+  }
+
+  return hexNum;
 };
 
 /******************************************************************************/

@@ -3,7 +3,30 @@
 /******************************************************************************/
 
 const convertToBase2 = element => {
-  // Your code here
+  
+  const binaryArray = [0];
+
+  let place = 0;
+  let base = 1;
+  while (element - base >= element / 2) {
+    binaryArray.push(0)
+    place++;
+    base = 2 ** place;
+  }
+
+  let newDec = element;
+
+
+  binaryArray.forEach((digit, index) => {
+    let base = 2 ** (binaryArray.length - index - 1);
+    if (newDec - base >= 0) {
+      binaryArray.splice(index, 1, 1);
+      newDec -= base;
+    }
+
+  })
+
+  return '0b'.concat(binaryArray.join(''));
 };
 
 /******************************************************************************/
