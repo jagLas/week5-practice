@@ -55,7 +55,7 @@ describe('Linked List', () => {
 
         beforeEach(function () {
             linkedList = new LinkedList();
-
+debugger
             linkedList.addToTail(1);
             linkedList.addToTail(2);
             linkedList.addToTail(3);
