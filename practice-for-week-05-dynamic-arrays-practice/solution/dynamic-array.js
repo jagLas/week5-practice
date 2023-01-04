@@ -6,25 +6,24 @@ class DynamicArray {
     this.length = 0;
 
     for (let i = 0; i < defaultSize; i++) {
-      this.data.push('');
+      this.data.push(undefined);
     }
   }
 
   read(index) {
-
-    // Your code here
+    return this.data[index];
   }
 
   unshift(val) {
-
-    // Your code here
+    this.length++;
+    for (let i = this.length - 1; i > 0; i--) {
+      this.data[i] = this.data[i - 1];
+    }
+    this.data[0] = val;
   }
 
 }
 
-dynamicArr = new DynamicArray();
-console.log(dynamicArr.length)
-console.log(this.data)
 
 
 

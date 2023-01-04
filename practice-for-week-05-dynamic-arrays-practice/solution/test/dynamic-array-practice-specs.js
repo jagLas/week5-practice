@@ -52,7 +52,7 @@ describe('Dynamic array', () => {
 
     expect(dynamicArr.length).to.equal(0);
     expect(dynamicArr.capacity).to.equal(4);
-
+debugger
     dynamicArr.unshift(1);
 
     expect(dynamicArr.length).to.equal(1);
