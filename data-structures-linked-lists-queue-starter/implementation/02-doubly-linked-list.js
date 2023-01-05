@@ -57,12 +57,53 @@ class DoublyLinkedList {
 
     removeFromHead() {
         // Remove node at head
+        let currentNode = this.head;
 
+        if(!this.length) {
+            return;
+        }
+
+        this.length--;
+
+        //for lists with only 1 item. length is now 0 due to decrement
+        if(!this.length) {
+            this.head = null;
+            this.tail = null;
+        //if it's more than one, set nextNodes previous, and fixes the head
+        } else{
+            let nextNode = currentNode.next;
+            nextNode.prev = null;
+            this.head = nextNode;
+        }
+
+        return currentNode.value;
         // Write your hypothesis on the time complexity of this method here
+        //O(1)
     }
 
     removeFromTail() {
         // Remove node at tail
+        let currentNode = this.tail;
+
+        if(!this.length) {
+            return;
+        }
+
+        this.length--;
+
+        //for lists with only 1 item. length is now 0 due to decrement
+        if(!this.length) {
+            this.head = null;
+            this.tail = null;
+        //if it's more than one, set nextNodes previous, and fixes the head
+        } else{
+            let prevNode = currentNode.prev;
+            prevNode.next = null;
+            this.tail = prevNode;
+        }
+
+        return currentNode.value;
+
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -106,9 +147,7 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
-debugger
-list.addToTail(1);
-list.print()
+
 
 module.exports = {
     DoublyLinkedList,
