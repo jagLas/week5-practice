@@ -128,9 +128,6 @@ class SinglyLinkedList {
     }
 }
 
-const list = new SinglyLinkedList();
-list.addToTail(1);
-list.print()
 
 module.exports = {
     SinglyLinkedList,
