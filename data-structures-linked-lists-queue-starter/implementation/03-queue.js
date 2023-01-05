@@ -51,6 +51,7 @@ class Queue {
         return currentNode.value;
         
         // Write your hypothesis on the time complexity of this method here
+        //O(1)
     }
 
 }
