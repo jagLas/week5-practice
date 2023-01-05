@@ -189,16 +189,6 @@ class SinglyLinkedList {
     }
 }
 
-const list = new SinglyLinkedList();
-list.addToTail(1);
-list.addToTail(2);
-list.addToTail(3);
-list.addToTail(4);
-
-console.log(list)
-debugger
-console.log(list.reverseInPlace());
-console.log(list)
 
 class DoublyLinkedNode {
     constructor(val) {
@@ -275,11 +265,35 @@ class DoublyLinkedList {
 
     reverseInPlace() {
         // Reverses the linked list in-place
-        
+        if (!this.head){
+            return null;
+        }
 
+        let oldHead = this.head;
+        let oldTail = this.tail;
+
+        let currentNode = this.head;
+
+        while (currentNode) {
+            let prevNode = currentNode.prev;
+            let nextNode = currentNode.next;
+    
+            currentNode.prev = nextNode;
+            currentNode.next = prevNode;
+    
+            currentNode = nextNode;
+        }
+
+        this.head = oldTail;
+        this.tail = oldHead;
+
+        return this;
         // Write your hypothesis on the time complexity of this method here
+        //this also executes in O(n); however, it mutates input
+
     }
 }
+
 
 module.exports = {
     SinglyLinkedNode,
