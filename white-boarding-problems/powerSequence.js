@@ -10,7 +10,6 @@ function powerSequence(base, length) {
     return sequence;
 }
 
-this was the most recent one
 
 console.log(powerSequence(3, 4));  // => [ 3, 9, 27, 81 ]
 console.log(powerSequence(2, 6));  // => [ 2, 4, 8, 16, 32, 64 ]
