@@ -37,11 +37,16 @@ class HashTable { // get O(1), set O(1), deleteKey O(1)
 
 
   insert(key, value) {
+    const loadFactor = this.count / this.capacity;
+
+    if(loadFactor >= .7) {
+      this.resize();
+    }
+
     const bucket = this.hashMod(key);
     let bucketPair = this.data[bucket];
     const pair = new KeyValuePair(key, value);
     pair.next = bucketPair;
-
 
     //while the bucket has data
     while(bucketPair) {
