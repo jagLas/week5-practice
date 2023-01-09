@@ -208,6 +208,7 @@ describe ('Phase 1 - Hash table implementation', function () {
     expect(hashTable.count).to.equal(3);
 
     // return string if key doesn't exist
+    debugger
     expect(hashTable.delete("key2")).to.equal("Key not found")
     expect(hashTable.delete("key10")).to.equal("Key not found")
 
