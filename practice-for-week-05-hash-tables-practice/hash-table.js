@@ -57,21 +57,40 @@ class HashTable {
     if (this.data[bucket]) {
       pair.next = this.data[bucket];
     }
-    
+
     this.data[bucket] = pair;
     this.count++;
   }
 
   insert(key, value) {
-    // Your code here
-  }
+    //tries to insert with errors.
+    try {
+      this.insertNoCollisions(key, value);
+      return; //if successful, end function
+    } catch {
+      //otherwise, continue on
+    };
 
+    const bucket = this.hashMod(key);
+    let bucketPair = this.data[bucket];
+
+    //if there was an error, bucket is occupied
+    while(bucketPair) {
+      //until the key matches
+      if(bucketPair.key === key) {
+        bucketPair.value = value; //change key value
+        return; //end function
+      } else {
+        bucketPair = bucketPair.next; //go to next node
+      }
+    }
+  
+    //add value to bucket with Collisions if no keys matched
+    this.insertWithHashCollisions(key, value);
+    
+  }
 }
 
-// const table = new HashTable(10);
-// table.insertNoCollisions('A');
-
-// table.insertNoCollisions('A');
 
 
 module.exports = HashTable;

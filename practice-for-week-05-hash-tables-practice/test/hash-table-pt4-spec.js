@@ -16,6 +16,7 @@ describe('Hash table complete insert method', () => {
   it('insert handles hash collisions AND updates values for same key inserts', () => {
 
     hashTable.insert("key-1", "val-1");
+    debugger
     hashTable.insert("key-2", "val-2");
     hashTable.insert("key-3", "val-3");
     hashTable.insert("key-1", "val-100000");
