@@ -39,6 +39,13 @@ class HashTable {
 
   insertNoCollisions(key, value) {
     // Your code here
+    let bucket = this.hashMod(key);
+
+    if (this.data[bucket]) {
+      throw new Error('hash collision or same key/value pair already exists!');
+    }
+    this.data[bucket] = new KeyValuePair(key, value);
+    this.count++;
   }
 
   insertWithHashCollisions(key, value) {
@@ -52,6 +59,9 @@ class HashTable {
 }
 
 // const table = new HashTable(10);
-// console.log(table.hashMod('ABC'))
+// table.insertNoCollisions('A');
+
+// table.insertNoCollisions('A');
+
 
 module.exports = HashTable;
