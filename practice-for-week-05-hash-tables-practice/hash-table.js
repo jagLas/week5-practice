@@ -63,31 +63,22 @@ class HashTable {
   }
 
   insert(key, value) {
-    //tries to insert with errors.
-    try {
-      this.insertNoCollisions(key, value);
-      return; //if successful, end function
-    } catch {
-      //otherwise, continue on
-    };
-
     const bucket = this.hashMod(key);
     let bucketPair = this.data[bucket];
 
-    //if there was an error, bucket is occupied
+    //while the bucket has data
     while(bucketPair) {
-      //until the key matches
+      //check if the keys match
       if(bucketPair.key === key) {
         bucketPair.value = value; //change key value
         return; //end function
       } else {
-        bucketPair = bucketPair.next; //go to next node
+        bucketPair = bucketPair.next; //go to pair in bucket
       }
     }
   
     //add value to bucket with Collisions if no keys matched
     this.insertWithHashCollisions(key, value);
-    
   }
 }
 
