@@ -52,15 +52,36 @@ function commonElements(arr1, arr2) {
 
 
 function duplicate(arr) {
-  // Your code here
+  const found = new Set();
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if(found.has(num)){
+      return num;
+    } else {
+      found.add(num);
+    }
+  }
+
+  return undefined;
 }
 
-console.log(duplicate([2,2,1]));             // => 2
-console.log(duplicate([7,2,4,9,5,4,8]));     // => 4
 
 function twoSum(nums, target) {
-  // Your code here
+  const difs = new Set();
+
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    let dif = target - num;
+    if (difs.has(num)) {
+      return true;
+    } else {
+      difs.add(dif);
+    }
+  }
+
+  return false;
 }
+
 
 
 function wordPattern(pattern, strings) {
