@@ -86,7 +86,30 @@ function twoSum(nums, target) {
 
 function wordPattern(pattern, strings) {
   // Your code here
+  let cypher = {}
+  let letterIncrement = 0;
+  let stringPattern = [];
+  strings.forEach(string => {
+    if (!cypher[string]) {
+      cypher[string] = String.fromCharCode(65 + letterIncrement);
+      letterIncrement++;
+    }
+
+    stringPattern.push(cypher[string]);
+  })
+
+  for (let i = 0; i < strings.length; i++) {
+    if (pattern[i] !== stringPattern[i]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
+// console.log(wordPattern("ABBA", ['dog', 'cat', 'cat', 'dog']));     // => true
+// console.log(wordPattern("ABBA", ['dog', 'dog', 'dog', 'dog']));     // => false
+// console.log(wordPattern("AAAA", ['dog', 'dog', 'dog', 'dog']));     // => true
+// console.log(wordPattern("ABCD", ['dog', 'cat', 'dog', 'cat']));     // => false
 
 module.exports = [anagrams, commonElements, duplicate, twoSum, wordPattern];
